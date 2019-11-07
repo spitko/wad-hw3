@@ -40,8 +40,8 @@
         <br>
         <br>
         <div>
-            <button id="add-course-button" class="blue-button">+</button>
-            <span id="add-course">
+            <button v-on:click="showForm = !showForm" id="add-course-button" class="blue-button">+</button>
+            <span v-if="showForm" id="add-course">
                                 <input class="input" type="text" placeholder="Course title" id="title">
                                 <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester">
                                 <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade">
@@ -53,6 +53,11 @@
 </template>
 <script>
     export default {
+        data: function() {
+            return {
+                showForm: false
+            }
+        },
         name: 'Courses'
     }
 </script>
