@@ -35,6 +35,10 @@
 
     import Profile from "./components/Profile";
     import Courses from "./components/Courses";
+    // eslint-disable-next-line no-unused-vars
+    import Course from "./models/Course";
+    // eslint-disable-next-line no-unused-vars
+    import User from "./models/User";
 
     export default {
         data: function () {
