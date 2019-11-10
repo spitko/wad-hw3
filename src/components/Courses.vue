@@ -47,7 +47,8 @@
             <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade">
             <button class="green-button" id="save-course">Save</button>
             <button @click="showForm = !showForm" class="grey-button" id="cancel-course">Cancel</button>
-        </span>
+
+            </span>
         </div>
 <!--        <AddCourse :show-form="showForm"/>-->
     </div>
