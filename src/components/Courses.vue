@@ -40,24 +40,85 @@
         <br>
         <br>
         <div>
-            <button v-on:click="showForm = !showForm" id="add-course-button" class="blue-button">+</button>
+            <button @click="showForm = !showForm" id="add-course-button" class="blue-button">+</button>
             <span v-if="showForm" id="add-course">
-                                <input class="input" type="text" placeholder="Course title" id="title">
-                                <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester">
-                                <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade">
-                                <button class="green-button" id="save-course">Save</button>
-                                <button class="grey-button" id="cancel-course">Cancel</button>
-                            </span>
+            <input class="input" type="text" placeholder="Course title" id="title">
+            <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester">
+            <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade">
+            <button class="green-button" id="save-course">Save</button>
+            <button class="grey-button" id="cancel-course">Cancel</button>
+        </span>
         </div>
+<!--        <AddCourse :show-form="showForm"/>-->
     </div>
 </template>
+
 <script>
+
+    // import AddCourse from "./AddCourse";
+
     export default {
-        data: function() {
+        name: 'Courses',
+
+        data: () => {
             return {
                 showForm: false
             }
         },
-        name: 'Courses'
+        // components: {
+        //     AddCourse
+        // },
+        // props: {
+        //     showForm: Function
     }
 </script>
+
+<style scoped>
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+    }
+
+    table th {
+        padding: 8px 12px;
+        text-align: left;
+        border: 1px solid #cbcbcb;
+        background-color: #03A9F4;
+        color: #ffffff;
+    }
+
+    table td {
+        padding: 8px 12px;
+        border: 1px solid #cbcbcb;
+    }
+
+    .blue-button {
+        background-color: #2196F3;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+    }
+
+    .green-button {
+        background-color: #69f378;
+        color: #ffffff;
+        border: none;
+        padding: 10px 10px;
+    }
+
+    .grey-button {
+        background-color: #e1e8e6;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+    }
+
+    .input {
+        border: 1px solid #cccccc;
+        padding: 10px 20px;
+        min-width: 135px;
+    }
+
+</style>
