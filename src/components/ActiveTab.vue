@@ -1,7 +1,8 @@
 <template>
     <section id="main">
         <div class="content">
-            <component v-bind:is="selected" class="tab active"></component>
+            <Profile v-if="selected === 'Profile'" v-bind:user="user"/>
+            <Courses v-if="selected === 'Courses'" v-bind:course-arr="courseArr"/>
         </div>
         <div class="controls">
             <button v-for="tab in tabs"
@@ -17,11 +18,20 @@
 <script>
     import Profile from "./Profile";
     import Courses from "./Courses";
+    import Course from "../models/Course";
+    import User from "../models/User";
 
     export default {
         name: "ActiveTab",
         data: function () {
             return {
+                courseArr: [
+                    new Course('Agile software development', 1, 82),
+                    new Course('System modeling', 2, 99),
+                    new Course('Object-oriented programming', 2, 99),
+                    new Course('Estonian language Level A2', 2, 65)
+                ],
+                user: new User('John', 'Doe', new Date('11/10/1990'), 'Software Engineering', 2.75),
                 selected: "Profile",
                 tabs: ["Profile", "Courses"]
             };

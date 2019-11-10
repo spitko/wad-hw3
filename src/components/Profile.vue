@@ -5,20 +5,38 @@
         </div>
         <div class="info">
             <ul>
-                <li id="name">John Wick</li>
-                <li id="birthdate">11.10.1982</li>
-                <li id="faculty">Assassin</li>
+                <li id="name">{{user.firstname + " " + user.lastname}}</li>
+                <li id="birthdate">{{user.birthdate}}</li>
+                <li id="faculty">{{user.faculty}}</li>
             </ul>
         </div>
         <div id="gpa">
-            <strong>2.75</strong>
+            <strong :key="gpaKey">{{user.gpa}}</strong>
         </div>
         <div class="clear-fix"></div>
     </div>
 </template>
 <script>
+    import User from "../models/User";
+    import {bus} from "../main";
+
     export default {
-        name: 'Profile'
+        name: 'Profile',
+        data: () => {
+            return {
+                gpaKey: 0,
+            }
+        },
+        created() {
+            const vm = this;
+            bus.$on("gpaChange", function (event) {
+                vm.user.gpa = event;
+                vm.gpaKey += 1;
+            })
+        },
+        props: {
+            user: User
+        }
     }
 </script>
 

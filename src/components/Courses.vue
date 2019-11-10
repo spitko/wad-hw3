@@ -46,7 +46,7 @@
         </table>
         <br>
         <br>
-        <AddCourse :show-form="show-Form"/>
+        <AddCourse/>
     </div>
 </template>
 
@@ -60,12 +60,6 @@
 
         data: () => {
             return {
-                courseArr: [
-                    new Course('Agile software development', 1, 82),
-                    new Course('System modeling', 2, 99),
-                    new Course('Object-oriented programming', 2, 99),
-                    new Course('Estonian language Level A2', 2, 65)
-                ],
                 showForm: false
             }
         },
@@ -73,8 +67,32 @@
             AddCourse,
         },
         methods: {
-            saveCourseMethod: function(title, semester, grade) {
-                this.courseArr.push(new Course(title,semester,grade));
+            saveCourseMethod: function (title, semester, grade) {
+                this.courseArr.push(new Course(title, semester, grade));
+                bus.$emit("gpaChange", this.getGpa())
+            },
+            getGpa: function () {
+                let sum = 0;
+                this.courseArr.forEach(function (element) {
+                    switch (true) {
+                        case element.grade > 90:
+                            sum += 4;
+                            break;
+                        case element.grade > 80:
+                            sum += 3;
+                            break;
+                        case element.grade > 70:
+                            sum += 2;
+                            break;
+                        case element.grade > 60:
+                            sum += 1;
+                            break;
+                        case element.grade > 50:
+                            sum += 0.5;
+                            break;
+                    }
+                });
+                return sum / this.courseArr.length
             }
         },
         created() {
@@ -82,6 +100,9 @@
             bus.$on('saveCourse', function (event) {
                 vm.saveCourseMethod(event[0], event[1], event[2]);
             });
+        },
+        props: {
+            courseArr: Array
         }
     }
 </script>
