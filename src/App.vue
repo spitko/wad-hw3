@@ -18,16 +18,7 @@
                 </div>
             </section>
         </section>
-        <footer>
-            <ul class="links">
-                <li>
-                    <a href="https://ois2.ut.ee/" target="_blank">OIS</a>
-                </li>
-                <li>
-                    <a href="https://courses.cs.ut.ee/" target="_blank">Courses</a>
-                </li>
-            </ul>
-        </footer>
+        <Links/>
     </main>
 </template>
 
@@ -35,10 +26,7 @@
 
     import Profile from "./components/Profile";
     import Courses from "./components/Courses";
-    // eslint-disable-next-line no-unused-vars
-    import Course from "./models/Course";
-    // eslint-disable-next-line no-unused-vars
-    import User from "./models/User";
+    import Links from "./components/Links";
 
     export default {
         data: function () {
@@ -50,8 +38,79 @@
         name: 'app',
         components: {
             Courses,
-            Profile
+            Profile,
+            Links
         }
     }
 </script>
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Livvic', sans-serif;
+    }
 
+    html, body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #eaeaea;
+    }
+
+    main {
+        position: relative;
+        min-height: 100%;
+        padding-bottom: 110px;
+    }
+
+    header {
+        padding: 20px;
+        background-color: #2196F3;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 10px;
+        height: 60px;
+    }
+
+    #container {
+        width: 80%;
+        max-width: 900px;
+        min-width: 320px;
+        padding: 15px;
+        background-color: #ffffff;
+        margin: 0 auto;
+    }
+
+    .content {
+        padding: 10px;
+        border: 1px solid #cbcbcb;
+    }
+
+    .content .tab {
+        display: none;
+    }
+
+    .content .tab.active {
+        display: block;
+    }
+
+    .controls .pill {
+        border: 1px solid #cbcbcb;
+        background-color: #eaeaea;
+        padding: 10px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-top: none;
+        margin-top: -1px;
+        outline: none !important;
+    }
+
+    .controls .pill.active {
+        background-color: #ffffff;
+        border-top: 1px solid #ffffff;
+    }
+
+    .controls .pill:hover {
+        cursor: pointer;
+    }
+</style>
