@@ -46,7 +46,7 @@
         </table>
         <br>
         <br>
-        <AddCourse/>
+        <AddCourse :index="courseArr.length"/>
     </div>
 </template>
 
@@ -99,7 +99,9 @@
         created() {
             const vm = this;
             bus.$on('saveCourse', function (event) {
-                vm.saveCourseMethod(event[0], event[1], event[2]);
+                if (event[3] > vm.courseArr.length){
+                    vm.saveCourseMethod(event[0], event[1], event[2]);
+                }
             });
         },
         props: {

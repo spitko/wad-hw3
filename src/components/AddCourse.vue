@@ -22,13 +22,14 @@
                 grade: '',
                 semester: '',
                 title: '',
-                showForm: false
-
+                showForm: false,
+                i: this.index + 1
             };
         },
         methods: {
             saveCourse: function () {
-                bus.$emit("saveCourse", [this.title, this.semester, this.grade]);
+                bus.$emit("saveCourse", [this.title, this.semester, this.grade, this.i]);
+                this.i += 1;
                 this.clearFields();
             },
             clearFields: function () {
@@ -38,9 +39,12 @@
                 this.showForm = false;
             },
             cancelCourse: function () {
-                this.showForm = false
+                this.showForm = false;
                 this.clearFields()
             }
+        },
+        props: {
+            index: Number
         }
 
     }
