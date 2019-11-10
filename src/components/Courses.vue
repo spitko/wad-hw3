@@ -40,13 +40,13 @@
         <br>
         <br>
         <div>
-            <button @click="showForm = !showForm" id="add-course-button" class="blue-button">+</button>
+            <button @click="showForm = !showForm" class="blue-button" id="add-course-button">+</button>
             <span v-if="showForm" id="add-course">
             <input class="input" type="text" placeholder="Course title" id="title">
             <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester">
             <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade">
             <button class="green-button" id="save-course">Save</button>
-            <button class="grey-button" id="cancel-course">Cancel</button>
+            <button @click="showForm = !showForm" class="grey-button" id="cancel-course">Cancel</button>
         </span>
         </div>
 <!--        <AddCourse :show-form="showForm"/>-->
@@ -113,6 +113,10 @@
         color: #ffffff;
         border: none;
         padding: 10px 20px;
+    }
+
+    .grey-button:hover {
+        background-color: crimson;
     }
 
     .input {
