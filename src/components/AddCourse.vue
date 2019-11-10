@@ -6,8 +6,8 @@
             <input class="input" v-model.number="semester" type="number" min="1" max="8" placeholder="Semester"
                    id="semester">
             <input class="input" v-model.number="grade" type="number" min="0" max="100" placeholder="Grade" id="grade">
-            <button class="green-button" v-on:click="saveCourse" id="save-course">Save</button>
-            <button class="grey-button" v-on:click="showForm = !showForm" id="cancel-course">Cancel</button>
+            <button class="green-button" @click="saveCourse" id="save-course">Save</button>
+            <button class="grey-button" @click="cancelCourse" id="cancel-course">Cancel</button>
         </span>
     </div>
 </template>
@@ -23,6 +23,7 @@
                 semester: '',
                 title: '',
                 showForm: false
+
             };
         },
         methods: {
@@ -35,6 +36,10 @@
                 this.semester = '';
                 this.title = '';
                 this.showForm = false;
+            },
+            cancelCourse: function () {
+                this.showForm = false
+                this.clearFields()
             }
         }
 
@@ -45,7 +50,7 @@
 
 <style scoped>
     .blue-button {
-        background-color: #2196F3;
+        background-color: #162b4e;
         color: #ffffff;
         border: none;
         padding: 10px 20px;
@@ -63,6 +68,10 @@
         color: #ffffff;
         border: none;
         padding: 10px 20px;
+    }
+
+    .grey-button:hover {
+        background-color: crimson;
     }
 
     .input {

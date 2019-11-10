@@ -1,13 +1,13 @@
 <template>
     <div id="profile">
         <div class="avatar">
-            <img src="../assets/me.png" id="picture" alt="My picture">
+            <img src="../assets/john.jpg" id="picture" alt="My picture">
         </div>
         <div class="info">
             <ul>
-                <li id="name">John Doe</li>
-                <li id="birthdate">11/10/1990</li>
-                <li id="faculty">Software Engineering</li>
+                <li id="name">John Wick</li>
+                <li id="birthdate">11.10.1982</li>
+                <li id="faculty">Assassin</li>
             </ul>
         </div>
         <div id="gpa">
@@ -48,6 +48,8 @@
 
     #profile .avatar img {
         width: 180px;
+        border-radius: 50%;
+        height: 180px;
     }
 
     #profile .info {

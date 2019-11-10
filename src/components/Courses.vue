@@ -46,7 +46,7 @@
         </table>
         <br>
         <br>
-        <AddCourse :show-form="showForm"/>
+        <AddCourse :show-form="show-Form"/>
     </div>
 </template>
 
@@ -98,44 +98,13 @@
         padding: 8px 12px;
         text-align: left;
         border: 1px solid #cbcbcb;
-        background-color: #03A9F4;
+        background-color: #162b4e;
         color: #ffffff;
     }
 
     table td {
         padding: 8px 12px;
         border: 1px solid #cbcbcb;
-    }
-
-    .blue-button {
-        background-color: #2196F3;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-    }
-
-    .green-button {
-        background-color: #69f378;
-        color: #ffffff;
-        border: none;
-        padding: 10px 10px;
-    }
-
-    .grey-button {
-        background-color: #e1e8e6;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-    }
-
-    .grey-button:hover {
-        background-color: crimson;
-    }
-
-    .input {
-        border: 1px solid #cccccc;
-        padding: 10px 20px;
-        min-width: 135px;
     }
 
 </style>
