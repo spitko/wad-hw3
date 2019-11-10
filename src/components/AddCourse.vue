@@ -7,13 +7,14 @@
                    id="semester">
             <input class="input" v-model.number="grade" type="number" min="0" max="100" placeholder="Grade" id="grade">
             <button class="green-button" v-on:click="saveCourse" id="save-course">Save</button>
-            <button class="grey-button" id="cancel-course">Cancel</button>
+            <button class="grey-button" v-on:click="showForm = !showForm" id="cancel-course">Cancel</button>
         </span>
     </div>
 </template>
 
 <script>
     import {bus} from "../main"
+
     export default {
         name: 'AddCourse',
         data: function () {
@@ -25,8 +26,15 @@
             };
         },
         methods: {
-            saveCourse: function() {
-                bus.$emit("saveCourse", [this.title, this.semester, this.grade])
+            saveCourse: function () {
+                bus.$emit("saveCourse", [this.title, this.semester, this.grade]);
+                this.clearFields();
+            },
+            clearFields: function () {
+                this.grade = '';
+                this.semester = '';
+                this.title = '';
+                this.showForm = false;
             }
         }
 

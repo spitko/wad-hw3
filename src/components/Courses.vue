@@ -74,7 +74,7 @@
         },
         methods: {
             saveCourseMethod: function(title, semester, grade) {
-                this.courseArr.push(new Course(title,semester,grade))
+                this.courseArr.push(new Course(title,semester,grade));
             }
         },
         created() {
