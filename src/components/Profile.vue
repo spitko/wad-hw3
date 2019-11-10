@@ -6,7 +6,7 @@
         <div class="info">
             <ul>
                 <li id="name">{{user.firstname + " " + user.lastname}}</li>
-                <li id="birthdate">{{user.birthdate}}</li>
+                <li id="birthdate">{{formatDate(user.birthdate)}}</li>
                 <li id="faculty">{{user.faculty}}</li>
             </ul>
         </div>
@@ -33,6 +33,21 @@
                 vm.user.gpa = event;
                 vm.gpaKey += 1;
             })
+        },
+        methods: {
+            formatDate: function formatDate(date) {
+                let d = new Date(date),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2)
+                    month = '0' + month;
+                if (day.length < 2)
+                    day = '0' + day;
+
+                return [year, month, day].join('/');
+            }
         },
         props: {
             user: User

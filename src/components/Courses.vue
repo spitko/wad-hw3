@@ -94,6 +94,7 @@
                 });
                 return sum / this.courseArr.length
             }
+
         },
         created() {
             const vm = this;
