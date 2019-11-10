@@ -11,7 +11,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+
+            <tr v-for="(course, index) in courseArr" :key="course.id">
+                <td>{{index}}</td>
+                <td>{{course.title}}</td>
+                <td>{{course.semester}}</td>
+                <td>{{course.grade}}</td>
+            </tr>
+            <!--<tr>
                 <td>1</td>
                 <td>Agile software development</td>
                 <td>1</td>
@@ -34,43 +41,48 @@
                 <td>Estonian language Level A2</td>
                 <td>2</td>
                 <td>65</td>
-            </tr>
+            </tr>-->
             </tbody>
         </table>
         <br>
         <br>
-        <div>
-            <button @click="showForm = !showForm" class="blue-button" id="add-course-button">+</button>
-            <span v-if="showForm" id="add-course">
-            <input class="input" type="text" placeholder="Course title" id="title">
-            <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester">
-            <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade">
-            <button class="green-button" id="save-course">Save</button>
-            <button @click="showForm = !showForm" class="grey-button" id="cancel-course">Cancel</button>
-
-            </span>
-        </div>
-<!--        <AddCourse :show-form="showForm"/>-->
+        <AddCourse :show-form="showForm"/>
     </div>
 </template>
 
 <script>
-
-    // import AddCourse from "./AddCourse";
+    import AddCourse from "./AddCourse";
+    import Course from "../models/Course";
+    import {bus} from "../main"
 
     export default {
         name: 'Courses',
 
         data: () => {
             return {
+                courseArr: [
+                    new Course('Agile software development', 1, 82),
+                    new Course('System modeling', 2, 99),
+                    new Course('Object-oriented programming', 2, 99),
+                    new Course('Estonian language Level A2', 2, 65)
+                ],
                 showForm: false
             }
         },
-        // components: {
-        //     AddCourse
-        // },
-        // props: {
-        //     showForm: Function
+        components: {
+            AddCourse,
+        },
+        methods: {
+            saveCourseMethod: function(title, semester, grade) {
+                this.courseArr.push(new Course(title,semester,grade))
+            }
+        },
+        created() {
+            const vm = this;
+            bus.$on('saveCourse', function (event) {
+                vm.saveCourseMethod(event[0], event[1], event[2]);
+            });
+        }
     }
 </script>
 
